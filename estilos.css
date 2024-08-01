@@ -24,7 +24,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    width: 320px;
     transition: all 0.3s ease-in-out;
 }
 
@@ -49,24 +49,24 @@ h2 {
 }
 
 .form-group {
-    display: flex;
-    align-items: center;
+    position: relative;
     margin-bottom: 15px;
 }
 
 label {
-    width: 100px; /* Ancho fijo para alinear */
+    display: block;
+    margin-bottom: 5px;
     font-weight: bold;
     color: #333; /* Color del texto */
-    margin-right: 10px;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"],
 select {
-    flex: 1;
+    width: 100%;
     padding: 10px;
+    margin-top: 5px;
     border-radius: 5px;
     border: 1px solid #ddd;
     transition: all 0.3s ease;
