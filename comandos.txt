@@ -1,0 +1,6 @@
+Configurar correo y usuario terminal
+git config --global user.email <correo>
+git config --global user.name <usuario>
+
+subir repositorio
+feat_ update README.md
