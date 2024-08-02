@@ -11,7 +11,8 @@ CREATE TABLE usuarios (
     direccion VARCHAR(255),
     usuario VARCHAR(50) UNIQUE,
     clave VARCHAR(255),
-    tipo VARCHAR(50),
+    celular VARCHAR(20),
     plan VARCHAR(50),
-    estado ENUM('activo', 'inactivo')
+    tipoPlan VARCHAR(50),
+    estado ENUM('activo', 'inactivo') DEFAULT 'inactivo'
 );

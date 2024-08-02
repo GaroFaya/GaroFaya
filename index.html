@@ -31,6 +31,10 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="celular">Celular:</label>
+                    <input type="text" id="celular" name="celular" required>
+                </div>
+                <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
@@ -47,18 +51,21 @@
                     <input type="password" id="clave" name="clave" required>
                 </div>
                 <div class="form-group">
-                    <label for="tipo">Tipo:</label>
-                    <input type="text" id="tipo" name="tipo" required>
-                </div>
-                <div class="form-group">
                     <label for="plan">Plan:</label>
-                    <input type="text" id="plan" name="plan" required>
+                    <select id="plan" name="plan" required>
+                        <option value="diario">Diario</option>
+                        <option value="interdiario">Interdiario</option>
+                        <option value="semanal">Semanal</option>
+                        <option value="quincenal">Quincenal</option>
+                        <option value="mensual">Mensual</option>
+                    </select>
                 </div>
-                <div class="form-group">
-                    <label for="estado">Estado:</label>
-                    <select id="estado" name="estado" required>
-                        <option value="activo">Activo</option>
-                        <option value="inactivo">Inactivo</option>
+                <div class="form-group" style="display: none;" id="tipoPlanGroup">
+                    <label for="tipoPlan">Tipo de Plan:</label>
+                    <select id="tipoPlan" name="tipoPlan">
+                        <option value="basico">Básico</option>
+                        <option value="fitness">Fitness</option>
+                        <option value="premium">Premium</option>
                     </select>
                 </div>
                 <button type="submit">Registrar</button>

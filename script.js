@@ -1,4 +1,14 @@
 $(document).ready(function() {
+    // Mostrar campo de tipo de plan solo si se selecciona "mensual"
+    $('#plan').change(function() {
+        const planSeleccionado = $(this).val();
+        if (planSeleccionado === 'mensual') {
+            $('#tipoPlanGroup').show();
+        } else {
+            $('#tipoPlanGroup').hide();
+        }
+    });
+
     // Efecto de hover en el formulario
     $('.form-container').hover(
         function() {
