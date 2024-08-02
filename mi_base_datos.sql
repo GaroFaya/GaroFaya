@@ -17,11 +17,6 @@ CREATE TABLE usuarios (
     estado ENUM('activo', 'inactivo') DEFAULT 'inactivo'
 );
 
-CREATE TABLE isotipos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre ENUM('hectomorfo', 'mesomorfo', 'endomorfo') UNIQUE
-);
-
 CREATE TABLE medidas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     pecho FLOAT,
@@ -35,7 +30,7 @@ CREATE TABLE cliente (
     id_usuario INT,
     peso FLOAT,
     talla FLOAT,
-    id_isotipo INT,
+    isotipo ENUM('hectomorfo', 'mesomorfo', 'endomorfo'),
     edad INT,
     actividad_fisica VARCHAR(100),
     indice_masa FLOAT,
@@ -43,6 +38,5 @@ CREATE TABLE cliente (
     id_medidas INT,
     PRIMARY KEY (id_usuario),
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
-    FOREIGN KEY (id_isotipo) REFERENCES isotipos(id),
     FOREIGN KEY (id_medidas) REFERENCES medidas(id)
 );
