@@ -1,6 +1,4 @@
-
 <?php
-                            //feat: update conexion.php
 $servername = "localhost"; // Cambia esto si es necesario
 $username = "root";        // Cambia esto si es necesario
 $password = "";            // Cambia esto si es necesario
@@ -14,4 +12,3 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 ?>
-
