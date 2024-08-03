@@ -15,7 +15,6 @@ $user_name = $_SESSION['user_name'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido</title>
-    <meta http-equiv="refresh" content="3;url=bienvenidocliente.php">
     <style>
         body {
             display: flex;
@@ -25,19 +24,40 @@ $user_name = $_SESSION['user_name'];
             background-color: #f4f4f4;
             font-family: Arial, sans-serif;
             text-align: center;
+            margin: 0;
         }
         .welcome-message {
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        .welcome-message h1 {
+            margin: 0 0 10px;
+        }
+        .welcome-message p {
+            margin: 0 0 20px;
+        }
+        .welcome-message a {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .welcome-message a:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
     <div class="welcome-message">
         <h1>¡Bienvenido, <?php echo htmlspecialchars($user_name); ?>!</h1>
-        <p>Serás redirigido a tu página principal en breve...</p>
+        <p>Gracias por registrarte e iniciar sesión. Estamos encantados de tenerte con nosotros.</p>
+        <p><a href="pagina_principal.php">Ir a tu página principal</a></p>
     </div>
 </body>
 </html>
