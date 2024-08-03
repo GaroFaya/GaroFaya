@@ -14,7 +14,6 @@
         </div>
         <div class="form-container">
             <h2>Información del Cliente</h2>
-            <!-- Aquí se especifica que al enviar el formulario, los datos se manden al archivo guardar_cliente.php -->
             <form id="clienteForm" action="guardar_cliente.php" method="POST">
                 <div class="form-group">
                     <label for="peso">Peso (kg):</label>
@@ -48,6 +47,7 @@
                     <label for="indice_grasa">Índice de Grasa:</label>
                     <input type="number" id="indice_grasa" name="indice_grasa" step="0.1" required>
                 </div>
+                <input type="hidden" id="fecha" name="fecha" value="<?php echo date('Y-m-d H:i:s'); ?>">
                 <button type="submit">Guardar</button>
             </form>
         </div>

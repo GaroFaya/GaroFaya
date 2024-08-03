@@ -1,33 +1,51 @@
 <?php
-include 'conexion.php';
+session_start();
+include 'conexion.php'; // Asegúrate de incluir el archivo de conexión
 
-// Obtener los datos del formulario
-$nombres = $_POST['nombres'];
-$apellidos = $_POST['apellidos'];
-$sexo = $_POST['sexo'];
-$celular = $_POST['celular'];
-$email = $_POST['email'];
-$direccion = $_POST['direccion'];
-$usuario = $_POST['usuario'];
-$clave = password_hash($_POST['clave'], PASSWORD_BCRYPT); // Encriptar la clave
-$plan = $_POST['plan'];
-$tipoPlan = $_POST['tipoPlan'] ?? null; // Opcional si no es mensual
-$estado = "inactivo"; // Estado inicial
+// Manejo del registro
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombres = $_POST['nombres'];
+    $apellidos = $_POST['apellidos'];
+    $sexo = $_POST['sexo'];
+    $email = $_POST['email'];
+    $direccion = $_POST['direccion'];
+    $usuario = $_POST['usuario'];
+    $clave = $_POST['clave'];
+    $celular = $_POST['celular'];
+    $plan = $_POST['plan'];
+    $tipoPlan = isset($_POST['tipoPlan']) ? $_POST['tipoPlan'] : null;
 
-// Preparar la consulta SQL
-$sql = "INSERT INTO usuarios (nombres, apellidos, sexo, celular, email, direccion, usuario, clave, plan, tipoPlan, estado) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    // Verificar si el usuario ya existe
+    $sql = "SELECT * FROM usuarios WHERE usuario = ? OR email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $usuario, $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows > 0) {
+        $error = "El usuario o email ya está registrado.";
+        header("Location: index.php?error=" . urlencode($error));
+        exit();
+    } else {
+        // Insertar nuevo usuario
+        $sql = "INSERT INTO usuarios (nombres, apellidos, sexo, email, direccion, usuario, clave, celular, plan, tipoPlan) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $hashed_password = password_hash($clave, PASSWORD_DEFAULT); // Hashear la contraseña
+        $stmt->bind_param("ssssssssss", $nombres, $apellidos, $sexo, $email, $direccion, $usuario, $hashed_password, $celular, $plan, $tipoPlan);
 
-// Usar una sentencia preparada para evitar inyecciones SQL
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("sssssssssss", $nombres, $apellidos, $sexo, $celular, $email, $direccion, $usuario, $clave, $plan, $tipoPlan, $estado);
+        if ($stmt->execute()) {
+            $_SESSION['user_id'] = $conn->insert_id; // Guardar ID del nuevo usuario en la sesión
+            header("Location: index.php?success=Usuario registrado exitosamente.");
+            exit();
+        } else {
+            $error = "Error al registrar el usuario: " . $stmt->error;
+            header("Location: index.php?error=" . urlencode($error));
+            exit();
+        }
+    }
 
-if ($stmt->execute()) {
-    echo "Registro exitoso.";
-} else {
-    echo "Error: " . $stmt->error;
+    $stmt->close();
 }
-
-$stmt->close();
 $conn->close();
 ?>

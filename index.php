@@ -60,7 +60,7 @@
                         <option value="mensual">Mensual</option>
                     </select>
                 </div>
-                <div class="form-group" style="display: none;" id="tipoPlanGroup">
+                <div class="form-group" id="tipoPlanGroup" style="display: none;">
                     <label for="tipoPlan">Tipo de Plan:</label>
                     <select id="tipoPlan" name="tipoPlan">
                         <option value="basico">Básico</option>
@@ -69,6 +69,11 @@
                     </select>
                 </div>
                 <button type="submit">Registrar</button>
+                <?php if (isset($_GET['success'])) : ?>
+                    <p style="color: green;"><?php echo htmlspecialchars($_GET['success']); ?></p>
+                <?php elseif (isset($_GET['error'])) : ?>
+                    <p style="color: red;"><?php echo htmlspecialchars($_GET['error']); ?></p>
+                <?php endif; ?>
             </form>
         </div>
     </div>

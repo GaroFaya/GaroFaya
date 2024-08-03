@@ -36,6 +36,7 @@ CREATE TABLE cliente (
     indice_masa FLOAT,
     indice_grasa FLOAT,
     id_medidas INT,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id_usuario),
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
     FOREIGN KEY (id_medidas) REFERENCES medidas(id)

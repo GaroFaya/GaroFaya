@@ -18,9 +18,7 @@ $(document).ready(function () {
 
     // Manejador de evento para el envío del formulario
     $('#clienteForm').on('submit', function (event) {
-        // Quita esta línea si quieres enviar el formulario de forma normal
-        // event.preventDefault();
-
+        event.preventDefault();
         const formData = new FormData(event.target);
 
         const clienteData = {
@@ -31,11 +29,22 @@ $(document).ready(function () {
             actividad_fisica: formData.get('actividad_fisica'),
             indice_masa: formData.get('indice_masa'),
             indice_grasa: formData.get('indice_grasa'),
+            fecha: formData.get('fecha')
         };
 
-        console.log('Datos del Cliente:', clienteData);
+        console.log('Datos del formulario:', clienteData);
 
-        // Aquí puedes añadir la lógica para enviar los datos al servidor
-        // o almacenarlos según sea necesario.
+        // Aquí puedes enviar los datos al servidor usando AJAX
+        $.ajax({
+            url: 'guardar_cliente.php',
+            method: 'POST',
+            data: clienteData,
+            success: function (response) {
+                alert('Datos guardados exitosamente');
+            },
+            error: function () {
+                alert('Error al guardar los datos');
+            }
+        });
     });
 });
