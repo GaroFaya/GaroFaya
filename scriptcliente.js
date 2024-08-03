@@ -28,22 +28,30 @@ $(document).ready(function () {
             edad: formData.get('edad'),
             actividad_fisica: formData.get('actividad_fisica'),
             indice_masa: formData.get('indice_masa'),
-            indice_grasa: formData.get('indice_grasa'),
-            fecha: formData.get('fecha')
+            indice_grasa: formData.get('indice_grasa')
         };
 
         console.log('Datos del formulario:', clienteData);
 
-        // Aquí puedes enviar los datos al servidor usando AJAX
+        // Enviar los datos al servidor usando AJAX
         $.ajax({
             url: 'guardar_cliente.php',
             method: 'POST',
             data: clienteData,
+            dataType: 'json',
             success: function (response) {
-                alert('Datos guardados exitosamente');
+                if (response.success) {
+                    alert(response.message); // Mostrar mensaje de éxito
+                } else {
+                    alert(response.message); // Mostrar mensaje de error
+                    // Opcional: redirigir al usuario al formulario de inicio de sesión si no está autenticado
+                    if (response.message.includes('autenticado')) {
+                        window.location.href = 'login.html';
+                    }
+                }
             },
             error: function () {
-                alert('Error al guardar los datos');
+                alert('Error al comunicarse con el servidor');
             }
         });
     });

@@ -26,12 +26,25 @@ $(document).ready(function() {
         $(this).prev('label').css('color', '#333');
     });
 
-    // Validación básica antes de enviar el formulario
-    $('#registroForm').on('submit', function(event) {
+    // Validación antes de enviar el formulario
+    $('#registroForm').on('submit', function(e) {
         const clave = $('#clave').val();
+        const confirmarClave = $('#confirmarClave').val();
+
+        // Verificar longitud de la clave
         if (clave.length < 6) {
-            alert('La clave debe tener al menos 6 caracteres.');
-            event.preventDefault();
+            e.preventDefault();
+            $('#mensajeClave').show();
+            return;
+        } else {
+            $('#mensajeClave').hide();
+        }
+
+        // Verificar que las claves coincidan
+        if (clave !== confirmarClave) {
+            e.preventDefault();
+            alert('Las claves no coinciden.');
+            return;
         }
     });
 });

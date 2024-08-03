@@ -51,9 +51,13 @@
                     <input type="password" id="clave" name="clave" required>
                 </div>
                 <div class="form-group">
+                    <label for="confirmarClave">Confirmar Clave:</label>
+                    <input type="password" id="confirmarClave" name="confirmarClave" required>
+                </div>
+                <p id="mensajeClave" style="color: red; display: none;">La clave debe tener al menos 6 caracteres.</p>
+                <div class="form-group">
                     <label for="plan">Plan:</label>
                     <select id="plan" name="plan" required>
-                        <option value="diario">Diario</option>
                         <option value="interdiario">Interdiario</option>
                         <option value="semanal">Semanal</option>
                         <option value="quincenal">Quincenal</option>

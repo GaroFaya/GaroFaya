@@ -26,11 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: bienvenida.php");
             exit();
         } else {
-            header("Location: login.html?error=Usuario o contraseña incorrectos.");
+            // Redirigir de vuelta al login con mensaje de error
+            header("Location: login.html?error=Usuario%20o%20contraseña%20incorrectos.");
             exit();
         }
+        
     } else {
-        header("Location: login.html?error=Usuario o contraseña incorrectos.");
+        // Redirigir a login.html con mensaje de error
+        header("Location: login.html?error=Usuario%20o%20contraseña%20incorrectos.");
         exit();
     }
     $stmt->close();

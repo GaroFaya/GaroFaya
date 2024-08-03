@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
     <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="anun_prom.css">
+
+    <script>
+        // Función para obtener parámetros de la URL
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                  results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Mostrar notificación si hay un error
+        window.onload = function() {
+            const error = getParameterByName('error');
+            if (error) {
+                alert(error);
+            }
+        };
+    </script>
 </head>
 <body>
     <div class="container">
@@ -21,9 +42,31 @@
                 </div>
                 <button type="submit">Iniciar Sesión</button>
             </form>
+            <form action="index.php" method="POST">
+                <button id="Registrar" type="submit" style="background-color: rgb(6, 143, 97);">Registrar</button>
+            </form>
+            
+            <!-- Aquí mostramos el mensaje de error -->
             <?php if (isset($_GET['error'])) : ?>
-                <p style="color: red;"><?php echo htmlspecialchars($_GET['error']); ?></p>
+                <p style="color: red; text-align: center;"><?php echo htmlspecialchars($_GET['error']); ?></p>
             <?php endif; ?>
+
+            <!-- Contenedor de Anuncios y Promociones -->
+            <div class="contenedor_anun_prom">
+                <!-- Contenedor de Anuncios -->
+                <div class="cont_anuncio">
+                    <h4>Anuncios</h4>
+                    <img src="planes.jfif" alt="Anuncio 1">
+                    <img src="anuncio2.jpg" alt="Anuncio 2">
+                </div>
+
+                <!-- Contenedor de Promociones -->
+                <div class="cont_prom">
+                    <h4>Promociones</h4>
+                    <img src="planes_mensuales.jfif" alt="Promoción 1">
+                    <img src="promo2.jpg" alt="Promoción 2">
+                </div>
+            </div>
         </div>
     </div>
 </body>

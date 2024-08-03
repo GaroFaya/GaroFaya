@@ -6,7 +6,8 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$user_name = $_SESSION['user_name'];
+// Verificar si el nombre de usuario está en la sesión
+$user_name = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : 'Invitado';
 ?>
 
 <!DOCTYPE html>
@@ -47,9 +48,21 @@ $user_name = $_SESSION['user_name'];
             background-color: #007bff;
             border-radius: 5px;
             text-decoration: none;
+            margin-bottom: 10px;
         }
         .welcome-message a:hover {
             background-color: #0056b3;
+        }
+        .logout-button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #dc3545;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .logout-button:hover {
+            background-color: #c82333;
         }
     </style>
 </head>
@@ -58,6 +71,7 @@ $user_name = $_SESSION['user_name'];
         <h1>¡Bienvenido, <?php echo htmlspecialchars($user_name); ?>!</h1>
         <p>Gracias por registrarte e iniciar sesión. Estamos encantados de tenerte con nosotros.</p>
         <p><a href="pagina_principal.php">Ir a tu página principal</a></p>
+        <p><a href="cerrarsesion.php" class="logout-button">Cerrar sesión</a></p>
     </div>
 </body>
 </html>

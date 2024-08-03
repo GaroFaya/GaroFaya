@@ -1,0 +1,27 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contenedor_anun_prom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #f5ebf2; /* Fondo gris claro */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.cont_anuncio, .cont_prom {
+    flex: 1;
+    margin: 0 10px;
+    text-align: center; /* Asegura que el texto esté centrado */
+}
+
+.cont_anuncio img, .cont_prom img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(10, 135, 167, 0.1);
+}
