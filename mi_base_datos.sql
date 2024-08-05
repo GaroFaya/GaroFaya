@@ -1,4 +1,4 @@
-CREATE DATABASE mi_base_datos;
+CREATE DATABASE athletic;
 
 USE mi_base_datos;
 

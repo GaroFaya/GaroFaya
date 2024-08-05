@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost"; // Cambia esto si es necesario
-$username = "root";        // Cambia esto si es necesario
-$password = "";            // Cambia esto si es necesario
-$dbname = "mi_base_datos"; // Cambia esto si es necesario
+$servername = "localhost";
+$username = "gimnasioathletic";
+$password = "Reynersvp2024";
+$dbname = "athletic";
 
 // Crear la conexión
 $conn = new mysqli($servername, $username, $password, $dbname);

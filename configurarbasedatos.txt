@@ -1,0 +1,14 @@
+Colocar contraseña de manera general
+
+abrir Xampp
+entrar al shell
+
+mysql -u root
+
+configurando desde el shell de Xampp
+
+CREATE USER 'gimnasioathletic'@'localhost' IDENTIFIED BY 'Reynersvp2024';
+GRANT ALL PRIVILEGES ON athletic.* TO 'gimnasioathletic'@'localhost' IDENTIFIED BY 'Reynersvp2024';
+FLUSH PRIVILEGES;
+SHOW GRANTS FOR 'gimnasioathletic'@'localhost';
+
