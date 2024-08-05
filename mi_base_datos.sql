@@ -1,6 +1,6 @@
 CREATE DATABASE athletic;
 
-USE mi_base_datos;
+USE athletic;
 
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
